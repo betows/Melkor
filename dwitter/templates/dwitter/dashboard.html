@@ -5,15 +5,12 @@
 {% block content %}
 
 <div class="column">
-  {% if user.is_authenticated %}
-  <h6 class="title is-6">Olá {{ user.username }}!</h6>
-{% endif %}
 
 {% for dweet in dweets %}
     <div class="box">
         {{dweet.body}}
         <span class="is-small has-text-grey-light">
-            ({{ dweet.created_at }} por  </span>
+            ({{ dweet.created_at }}) por  </span>
             <span class="is-small has-text-grey-light">
             {{ dweet.user.username }}
             </span>
