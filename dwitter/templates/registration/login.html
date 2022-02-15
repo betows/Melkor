@@ -3,10 +3,13 @@
 {% block content %}
 
     <div class="content">
-        <form method="POST">
+
+        <form class="box" method="POST">
+            <div class="field">
         {% csrf_token %}
         {{form.as_p}}
             <button class="button is-link" type="submit">Login</button>
+            </div>
         </form>
         Não tem uma conta? aiaiai... <a href="/register" ><strong>Registre-se aqui!</strong></a>!
     </div>
