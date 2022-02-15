@@ -1,0 +1,59 @@
+<!-- dwitter/templates/dwitter/dashboard.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="column">
+  {% if user.is_authenticated %}
+  <h6 class="title is-6">Olá {{ user.username }}!</h6>
+{% endif %}
+
+{% for dweet in dweets %}
+    <div class="box">
+        {{dweet.body}}
+        <span class="is-small has-text-grey-light">
+            ({{ dweet.created_at }} por  </span>
+            <span class="is-small has-text-grey-light">
+            {{ dweet.user.username }}
+            </span>
+    </div>
+{% endfor %}
+</div>
+{% if user.is_authenticated %}
+<div class="column is-one-third">
+
+    <div class="block">
+        <a href="{% url 'dwitter:profile_list' %} ">
+            <button class="button is-dark is-outlined is-fullwidth">
+                Todos os perfis
+            </button>
+        </a>
+    </div>
+
+    <div class="block">
+        <a href="{% url 'dwitter:profile' request.user.profile.id %} ">
+            <button class="button is-link is-light is-outlined is-fullwidth">
+                Meu perfil
+            </button>
+        </a>
+    </div>
+    
+    <div class="block">
+        <div class="block">
+            <h2 class="title is-2">Faça seu post</p>
+        </div>
+        <div class="block">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="button is-link is-fullwidth is-medium mt-5"
+                        type="submit">Dale
+                </button>
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endif %}
+{% endblock content %}

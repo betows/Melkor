@@ -1,0 +1,107 @@
+<!-- dwitter/templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include the Bulma CSS framework for styling -->
+    <link href="/static/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="canonical" href="https://aldi.github.io/bulma-login-template/" />
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-social@1/bin/bulma-social.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <title>Melkor</title>
+</head>
+<body>
+  <a href="{% url 'dwitter:dashboard' %} "></a>
+  <section class="hero is-small is-link mb-4">
+      <div class="hero-body">
+          <h1 class="title is-1">Melkor</h1>
+          <p class="subtitle is-4">
+              A rede social dos aventureiros!
+          </p>
+      </div>
+      <nav class="breadcrumb is-right" aria-label="breadcrumbs">
+        <ul>
+          {% if user.is_authenticated %}
+          <li>
+            <a href="{% url 'dwitter:dashboard' %}">
+              <span class="icon is-small">
+                <i class="fas fa-home" aria-hidden="true"></i>
+              </span>
+              <span>Início</span>
+            </a>
+          </li>
+          {% else %}
+
+          <li>
+            <a href="{% url 'dwitter:login' %}">
+              <span class="icon is-small">
+                <i class="fas fa-home" aria-hidden="true"></i>
+              </span>
+              <span>Log In</span>
+            </a>
+          </li>
+          {% endif %}
+          <li>
+            <a href="#">
+              <span class="icon is-small">
+                <i class="fas fa-book" aria-hidden="true"></i>
+              </span>
+              <span>Aventuras</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon is-small">
+                <i class="fas fa-puzzle-piece" aria-hidden="true"></i>
+              </span>
+              <span>Personagens</span>
+            </a>
+          </li>
+          
+          {% if user.is_authenticated %}
+          <li>
+            <a href="{% url 'logout' %}">
+              <span class="icon is-small">
+                <i class="fas fa-thumbs-down" aria-hidden="true"></i>
+              </span>
+              <span>Log Out</span>
+            </a>
+          </li>
+
+          {% else %} 
+
+          <li>
+            <a href="{% url 'dwitter:register' %}">
+              <span class="icon is-small">
+                <i class="fas fa-thumbs-up" aria-hidden="true"></i>
+              </span>
+              <span>crie sua conta</span>
+            </a>
+          </li>
+          
+          {% endif %}
+        </ul>
+      </nav>
+  </section>
+</a>
+  
+
+  <div class="container">
+      <div class="columns">
+
+          {% block content %}
+
+          {% endblock content %}
+
+      </div>
+        </div>
+</body>
+</html>
