@@ -25,7 +25,11 @@ SECRET_KEY = (
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'melkorr.herokuapp.com',
+    'localhost'
+
+]
 
 
 # Application definition
@@ -40,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "dwitter",
     "crispy_forms",
+    "django_heroku",
 
 ]
 
